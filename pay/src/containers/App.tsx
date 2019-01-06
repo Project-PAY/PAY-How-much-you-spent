@@ -1,11 +1,12 @@
 import * as React from 'react';
-import './App.scss';
+import SplashMain from '../components/SplashMain';
+import '../style/app.scss';
 
 class App extends React.Component {
-  public render() {
+  render() {
     return (
       <div className="app">
-        Hello
+        <SplashMain />
       </div>
     );
   }
