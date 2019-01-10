@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../style/splash-main.scss';
+import './splash-main.scss';
 
 const SplashMain:React.ComponentType = () => (
   <div className="splash-main">

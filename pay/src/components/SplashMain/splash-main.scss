@@ -1,0 +1,30 @@
+@import "../../style/variables";
+
+.splash-main {
+  height: 100%;
+  background-color: $main-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-family: 'Gotham Bold';
+    font-size: 60px;
+    color: $white-color;
+    animation-name: 'spacing';
+    animation-duration: .6s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    letter-spacing: -5px;
+  }
+
+  @keyframes spacing {
+    from {
+      letter-spacing: -5px;
+    }
+
+    to {
+      letter-spacing: 0;
+    }
+  }
+}

@@ -13,6 +13,8 @@
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "array-bracket-spacing": [true, "never"],
     "object-curly-spacing": [true, "never"],
+    "no-empty-interface": false,
+    "no-shadowed-variable": true,
     "indent": [
       true,
       "spaces",
