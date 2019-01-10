@@ -8,13 +8,15 @@
     ]
   },
   "rules": {
+    "no-console": false,
     "member-access": [true, "no-public"],
     "no-unused-variable": true,
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "array-bracket-spacing": [true, "never"],
     "object-curly-spacing": [true, "never"],
     "no-empty-interface": false,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
+    "no-shadow": false,
     "indent": [
       true,
       "spaces",
