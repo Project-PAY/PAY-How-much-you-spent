@@ -15,8 +15,18 @@
     "array-bracket-spacing": [true, "never"],
     "object-curly-spacing": [true, "never"],
     "no-empty-interface": false,
-    "no-shadowed-variable": false,
-    "no-shadow": false,
+    "no-shadowed-variable": [
+      true,
+      {
+        "class": true,
+        "enum": true,
+        "function": true,
+        "interface": false,
+        "namespace": true,
+        "typeAlias": false,
+        "typeParameter": false
+      }
+    ],
     "indent": [
       true,
       "spaces",
@@ -32,7 +42,7 @@
       "error",
       "always"
     ],
-    "ordered-imports": [false],
+    "ordered-imports": false,
     "object-literal-sort-keys": false
   }
 }

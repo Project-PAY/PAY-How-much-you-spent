@@ -4,19 +4,29 @@
   height: 100%;
   background-color: $main-color;
 
-  h1, h2 {
-    font-family: 'Gotham Bold';
-    color: $white-color;
-    padding-left: 30px;
+  img {
+    display: block;
+    width: 100%;
+    height: calc(100% - 186px);
+    object-fit: cover;
+    object-position: center;
   }
 
-  h1 {
-    font-size: 40px;
-    padding-top: 60px;
-  }
+  a {
+    text-decoration: none;
 
-  h2 {
-    font-size: 20px;
-    opacity: .5;
+    button {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border: 0;
+      background-color: #ff8c55;
+  
+      span {
+        font-family: 'Gotham Medium';
+        font-size: 14px;
+        color: $white-color;
+      }
+    }
   }
 }
