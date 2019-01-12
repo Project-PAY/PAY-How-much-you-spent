@@ -33,6 +33,6 @@
       "always"
     ],
     "ordered-imports": [false],
-    "object-literal-sort-keys": [false]
+    "object-literal-sort-keys": false
   }
 }
