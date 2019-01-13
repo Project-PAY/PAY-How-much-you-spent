@@ -2,7 +2,6 @@ import * as React from 'react';
 import IBase from '../../@types/models/base';
 import MainTitle from '../common/MainTitle/MainTitle';
 import './setting.scss';
-import Input from '../common/Input/Input';
 
 interface IState extends IBase {
   [key: string]: any;
@@ -36,7 +35,13 @@ class Setting extends React.Component<{}, IState> {
     return (
       <div className="setting">
         <MainTitle />
-        <Input />
+        <input
+          type="number"
+          placeholder="입력해주세요"
+          value={this.state.currentMoney}
+          name="currentMoney"
+          onChange={this.onChange}
+        />
       </div>
     );
   }
