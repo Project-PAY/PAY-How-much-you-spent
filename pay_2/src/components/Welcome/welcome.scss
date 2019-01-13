@@ -1,0 +1,32 @@
+@import "../../style/variables";
+
+.welcome {
+  height: 100%;
+  background-color: $main-color;
+
+  img {
+    display: block;
+    width: 100%;
+    height: calc(100% - 186px);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  a {
+    text-decoration: none;
+
+    button {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border: 0;
+      background-color: #ff8c55;
+  
+      span {
+        font-family: 'Gotham Medium';
+        font-size: 14px;
+        color: $white-color;
+      }
+    }
+  }
+}
