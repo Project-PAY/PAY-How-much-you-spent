@@ -36,11 +36,7 @@ class Setting extends React.Component<{}, IState> {
     return (
       <div className="setting">
         <MainTitle />
-        <Input
-          name="CurrentMoney"
-          value={this.state.currentMoney}
-          onChange={this.onChange}
-        />
+        <Input />
       </div>
     );
   }
