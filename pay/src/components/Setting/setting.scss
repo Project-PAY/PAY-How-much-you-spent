@@ -3,19 +3,4 @@
 .setting {
   height: 100%;
   background-color: $main-color;
-
-  // Test
-  input {
-    display: block;
-    box-sizing: border-box;
-    background-color: transparent;
-    width: calc(100% - 60px);
-    height: 60px;
-    border: 4px solid $white-color;
-    margin: 0 auto 12px auto;
-    font-family: 'Gotham Light';
-    font-size: 14px;
-    color: $white-color;
-    padding-left: 22px;
-  }
 }

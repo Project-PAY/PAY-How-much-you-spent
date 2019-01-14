@@ -1,6 +1,11 @@
 import * as React from 'react';
 import IBase from '../../@types/models/base';
 import MainTitle from '../common/MainTitle/MainTitle';
+import Input from '../common/Input/Input';
+import {
+  convertToSpecificFormat,
+  convertToNormalFormat
+} from '../../lib/convertNumber';
 import './setting.scss';
 
 interface IState extends IBase {
@@ -9,37 +14,33 @@ interface IState extends IBase {
 
 class Setting extends React.Component<{}, IState> {
   state: IState = {
-    currentMoney: 0,
+    currentMoney: '',
     hasFixedIncome: false,
-    fixedIncome: 0,
-    incomeCycle: 0
+    fixedIncome: '',
+    incomeCycle: ''
   }
 
   onChange = ({target: {name, value}}: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      [name]: value
-    }, () => {
-      console.log('--Current State --');
-      console.dir(this.state);
+      [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
     });
   }
 
   render() {
-    /* const {
+    const {
       currentMoney,
-      hasFixedIncome,
+      /*hasFixedIncome,
       fixedIncome,
-      incomeCycle
-    } = this.state;*/
+      incomeCycle*/
+    } = this.state;
 
     return (
       <div className="setting">
         <MainTitle />
-        <input
-          type="number"
-          placeholder="입력해주세요"
-          value={this.state.currentMoney}
+        <Input
           name="currentMoney"
+          value={currentMoney}
+          placeholder="소지한 돈을 입력하세요."
           onChange={this.onChange}
         />
       </div>

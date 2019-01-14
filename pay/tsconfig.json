@@ -1,9 +1,11 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build/dist",
     "module": "esnext",
-    "target": "es6",
+    "target": "es2015",
+    "moduleResolution": "node",
     "lib": [
       "dom",
       "es2015",
@@ -18,11 +20,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "moduleResolution": "node",
+    "noUnusedLocals": true
   },
   "exclude": [
     "node_modules",
