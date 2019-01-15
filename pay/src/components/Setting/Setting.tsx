@@ -6,6 +6,7 @@ import {
   convertToSpecificFormat,
   convertToNormalFormat
 } from '../../lib/convertNumber';
+import LinkBtn from '../common/LinkBtn/LinkBtn';
 import './setting.scss';
 
 interface IState extends IBase {
@@ -15,14 +16,26 @@ interface IState extends IBase {
 class Setting extends React.Component<{}, IState> {
   state: IState = {
     currentMoney: '',
-    hasFixedIncome: null,
+    hasFixedIncome: false,
     fixedIncome: '',
     incomeCycle: ''
   }
 
-  onChange = ({target: {name, value}}: React.ChangeEvent<HTMLInputElement>) => {
+  onChange = ({target: {name, value}}: React.ChangeEvent<HTMLInputElement>, type:string = 'money') => {
+    if (type === 'money') {
+      this.setState({
+        [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
+      });
+    } else {
+      (Number(value) <= 100 || value === '') && this.setState({
+        [name]: value
+      });
+    }
+  }
+  
+  onClick = () => {
     this.setState({
-      [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
+      hasFixedIncome: !this.state.hasFixedIncome
     });
   }
 
@@ -30,8 +43,8 @@ class Setting extends React.Component<{}, IState> {
     const {
       currentMoney,
       hasFixedIncome,
-      /*fixedIncome,
-      incomeCycle*/
+      fixedIncome,
+      incomeCycle
     } = this.state;
 
     return (
@@ -47,11 +60,34 @@ class Setting extends React.Component<{}, IState> {
         />
         <Input
           name="hasFixedIncome"
-          value={hasFixedIncome}
-          placeholder="고정 수입이 있나요?"
-          onChange={this.onChange}
+          value="고정 수입이 있나요?"
           disabled={true}
           className="has-fixed-income"
+          arrow={true}
+          opened={hasFixedIncome}
+          onClick={this.onClick}
+        />
+        {hasFixedIncome && (
+          <>
+            <Input
+              name="fixedIncome"
+              value={fixedIncome}
+              placeholder="한달 고정 수입을 입력하세요."
+              onChange={this.onChange}
+              suffix="원"
+            />
+            <Input
+              name="incomeCycle"
+              value={incomeCycle}
+              placeholder="수입 주기를 입력하세요."
+              onChange={e => this.onChange(e, 'date')}
+              suffix="일"
+            />
+          </>
+        )}
+        <LinkBtn
+          to="/main"
+          text="설정하기"
         />
       </div>
     );

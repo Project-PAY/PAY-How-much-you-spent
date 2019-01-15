@@ -1,0 +1,21 @@
+@import "../../../style/variables";
+
+a {
+  text-decoration: none;
+
+  button {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 60px;
+    border: 0;
+    background-color: #ff8c55;
+
+    span {
+      font-family: 'NanumSquare';
+      font-size: 14px;
+      color: $white-color;
+    }
+  }
+}

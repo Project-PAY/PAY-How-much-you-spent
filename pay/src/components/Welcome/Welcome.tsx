@@ -1,8 +1,8 @@
 import * as React from 'react';
 import MainImg from '../../assets/images/img-setting-background.png';
-import './welcome.scss';
-import {Link} from 'react-router-dom';
 import MainTitle from '../common/MainTitle/MainTitle';
+import LinkBtn from '../common/LinkBtn/LinkBtn';
+import './welcome.scss';
 
 const Welcome:React.ComponentType = () => (
   <div className="welcome">
@@ -11,11 +11,10 @@ const Welcome:React.ComponentType = () => (
       src={MainImg}
       alt="배경사진"
     />
-    <Link to="/setting">
-      <button>
-        <span>환영합니다!</span>
-      </button>
-    </Link>
+    <LinkBtn
+      to="/setting"
+      text="환영합니다!"
+    />
   </div>
 );
 
