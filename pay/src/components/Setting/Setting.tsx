@@ -51,6 +51,7 @@ class Setting extends React.Component<{}, IState> {
           placeholder="고정 수입이 있나요?"
           onChange={this.onChange}
           disabled={true}
+          className="has-fixed-income"
         />
       </div>
     );

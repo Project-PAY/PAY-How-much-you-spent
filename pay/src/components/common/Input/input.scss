@@ -12,6 +12,24 @@
     margin-top: 35px;
   }
 
+  &.has-fixed-income {
+    // Other
+    &::after {
+      content: "";
+      position: absolute;
+      width: 58px;
+      height: 60px;
+      border-left: 4px solid $white-color;
+      top: -4px;
+      right: -4px;
+      background-image: url(../../../assets/icons/icon-down-arrow.png);
+      background-size: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+  }
+
   input {
     display: block;
     width: 100%;
