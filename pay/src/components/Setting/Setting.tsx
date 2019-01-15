@@ -15,7 +15,7 @@ interface IState extends IBase {
 class Setting extends React.Component<{}, IState> {
   state: IState = {
     currentMoney: '',
-    hasFixedIncome: false,
+    hasFixedIncome: null,
     fixedIncome: '',
     incomeCycle: ''
   }
@@ -29,8 +29,8 @@ class Setting extends React.Component<{}, IState> {
   render() {
     const {
       currentMoney,
-      /*hasFixedIncome,
-      fixedIncome,
+      hasFixedIncome,
+      /*fixedIncome,
       incomeCycle*/
     } = this.state;
 
@@ -42,6 +42,15 @@ class Setting extends React.Component<{}, IState> {
           value={currentMoney}
           placeholder="소지한 돈을 입력하세요."
           onChange={this.onChange}
+          className="current-money"
+          suffix="원"
+        />
+        <Input
+          name="hasFixedIncome"
+          value={hasFixedIncome}
+          placeholder="고정 수입이 있나요?"
+          onChange={this.onChange}
+          disabled={true}
         />
       </div>
     );

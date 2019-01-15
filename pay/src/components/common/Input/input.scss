@@ -8,6 +8,10 @@
   margin: 0 auto 12px auto;
   box-sizing: border-box;
 
+  &.current-money {
+    margin-top: 35px;
+  }
+
   input {
     display: block;
     width: 100%;

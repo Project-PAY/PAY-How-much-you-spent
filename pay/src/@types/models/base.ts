@@ -1,8 +1,9 @@
-type InputType = number | string;
+type InputType = string | number;
+type BooleanType = boolean | null;
 
 export default interface IBase {
   currentMoney: InputType;
-  hasFixedIncome: boolean;
+  hasFixedIncome: BooleanType;
   fixedIncome?: InputType;
   incomeCycle?: InputType;
 }
