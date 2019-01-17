@@ -7,6 +7,7 @@ import {
   convertToNormalFormat
 } from '../../lib/convertNumber';
 import LinkBtn from '../common/LinkBtn/LinkBtn';
+import InputRange from '../common/InputRange/InputRange';
 import './setting.scss';
 
 interface IState extends IBase {
@@ -82,6 +83,13 @@ class Setting extends React.Component<{}, IState> {
               placeholder="수입 주기를 입력하세요."
               onChange={e => this.onChange(e, 'date')}
               suffix="일"
+            />
+            <InputRange
+              min={0}
+              max={100}
+              step={1}
+              value={incomeCycle || 0}
+              onChange={(e) => this.setState({incomeCycle: e.target.value})}
             />
           </>
         )}
