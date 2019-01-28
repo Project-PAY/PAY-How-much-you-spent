@@ -10,11 +10,15 @@ import LinkBtn from '../common/LinkBtn/LinkBtn';
 import InputRange from '../common/InputRange/InputRange';
 import './setting.scss';
 
+interface IProps {
+  registerBaseInfo: (state: IBase) => void;
+}
+
 interface IState extends IBase {
   [key: string]: any;
 }
 
-class Setting extends React.Component<{registerBaseInfo: any}, IState> {
+class Setting extends React.Component<IProps, IState> {
   state: IState = {
     currentMoney: '',
     hasFixedIncome: false,
@@ -22,18 +26,47 @@ class Setting extends React.Component<{registerBaseInfo: any}, IState> {
     incomeCycle: ''
   }
 
+  checkStatus = () => {
+    const {
+      currentMoney,
+      hasFixedIncome,
+      fixedIncome,
+      incomeCycle
+    } = this.state;
+
+    /**
+     * TODO: alert 구문 대신 toastr로 변경
+     */
+    if (currentMoney === '') {
+      alert('소지한 돈을 입력해주세요!');
+      return false;
+    } else if (hasFixedIncome && (fixedIncome === '')) {
+      alert('한달 고정 수입을 입력해주세요!');
+      return false;
+    } else if (hasFixedIncome && (incomeCycle === '')) {
+      alert('수입 초기화 날짜를 입력해주세요!');
+      return false;
+    }
+
+    return true;
+  }
+
   onChange = (
     {target: {name, value}}: React.ChangeEvent<HTMLInputElement>,
     type: string = 'money'
   ) => {
-    if (type === 'money') {
-      this.setState({
-        [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
-      });
-    } else {
-      (Number(value) <= 31 || value === '') && this.setState({
-        [name]: value
-      });
+    switch (type) {
+      case 'money':
+        this.setState({
+          [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
+        });
+        break;
+      case 'date':
+        (Number(value) <= 31 || value === '') && this.setState({
+          [name]: value
+        });
+        break;
+      default: break;
     }
   }
   
@@ -100,7 +133,9 @@ class Setting extends React.Component<{registerBaseInfo: any}, IState> {
         <LinkBtn
           to="/main"
           text="설정하기"
-          onClick={() => registerBaseInfo(this.state)} // this.props.registerBaseInfo와 같음
+          onClick={() => {
+            this.checkStatus() && registerBaseInfo(this.state)
+          }}
         />
       </div>
     );

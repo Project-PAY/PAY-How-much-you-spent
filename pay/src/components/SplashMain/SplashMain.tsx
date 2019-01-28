@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {loadState} from '../../lib/localStorage';
 import './splash-main.scss';
 
-interface IProps extends RouteComponentProps<any> { }
+interface IProps extends RouteComponentProps<any> {}
 
 class SplashMain extends React.Component<IProps> {
   componentDidMount() {
