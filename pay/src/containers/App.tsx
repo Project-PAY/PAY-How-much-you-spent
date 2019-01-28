@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import {
   SplashMain,
   Welcome,
-  Setting
+  SettingContainer
 } from '../routes';
 import '../style/app.scss';
 
@@ -17,7 +17,7 @@ class App extends React.Component {
           component={SplashMain}
         />
         <Route path="/welcome" component={Welcome} />
-        <Route path="/setting" component={Setting} />
+        <Route path="/setting" component={SettingContainer} />
       </div>
     );
   }

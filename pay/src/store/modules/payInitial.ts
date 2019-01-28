@@ -16,15 +16,9 @@ const initialState = {
 };
 
 export default handleActions({
-  [REGISTER_BASE_INFO]: ({
-    currentMoney,
-    hasFixedIncome,
-    fixedIncome,
-    incomeCycle
-  }: IBase, _: any) => ({
-    currentMoney,
-    hasFixedIncome,
-    fixedIncome,
-    incomeCycle
+  [REGISTER_BASE_INFO]: (_: IBase, {
+    payload: {...rest}
+  }) => ({
+    ...rest
   })
 }, initialState);

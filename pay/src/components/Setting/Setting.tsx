@@ -14,7 +14,7 @@ interface IState extends IBase {
   [key: string]: any;
 }
 
-class Setting extends React.Component<{}, IState> {
+class Setting extends React.Component<{registerBaseInfo: any}, IState> {
   state: IState = {
     currentMoney: '',
     hasFixedIncome: false,
@@ -22,13 +22,16 @@ class Setting extends React.Component<{}, IState> {
     incomeCycle: ''
   }
 
-  onChange = ({target: {name, value}}: React.ChangeEvent<HTMLInputElement>, type:string = 'money') => {
+  onChange = (
+    {target: {name, value}}: React.ChangeEvent<HTMLInputElement>,
+    type: string = 'money'
+  ) => {
     if (type === 'money') {
       this.setState({
         [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
       });
     } else {
-      (Number(value) <= 100 || value === '') && this.setState({
+      (Number(value) <= 31 || value === '') && this.setState({
         [name]: value
       });
     }
@@ -47,6 +50,7 @@ class Setting extends React.Component<{}, IState> {
       fixedIncome,
       incomeCycle
     } = this.state;
+    const {registerBaseInfo} = this.props;
 
     return (
       <div className="setting">
@@ -80,22 +84,23 @@ class Setting extends React.Component<{}, IState> {
             <Input
               name="incomeCycle"
               value={incomeCycle}
-              placeholder="수입 주기를 입력하세요."
+              placeholder="수입 초기화 날짜를 입력하세요."
               onChange={e => this.onChange(e, 'date')}
               suffix="일"
             />
             <InputRange
-              min={0}
-              max={100}
+              min={1}
+              max={31}
               step={1}
-              value={incomeCycle || 0}
-              onChange={(e) => this.setState({incomeCycle: e.target.value})}
+              value={incomeCycle || 1}
+              onChange={({target: {value}}) => this.setState({incomeCycle: value})}
             />
           </>
         )}
         <LinkBtn
           to="/main"
           text="설정하기"
+          onClick={() => registerBaseInfo(this.state)} // this.props.registerBaseInfo와 같음
         />
       </div>
     );

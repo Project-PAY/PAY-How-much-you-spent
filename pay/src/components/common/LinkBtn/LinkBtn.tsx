@@ -5,14 +5,16 @@ import './link-btn.scss';
 interface ILinkBtnProps {
   to: string;
   text: string;
+  onClick?: () => void;
 }
 
 const LinkBtn:React.ComponentType<ILinkBtnProps> = ({
   to,
-  text
+  text,
+  onClick
 }) => (
   <Link to={to}>
-    <button>
+    <button onClick={onClick}>
       <span>{text}</span>
     </button>
   </Link>

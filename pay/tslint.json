@@ -12,7 +12,9 @@
   },
   "rules": {
     "no-console": false,
+    "no-debugger": false,
     "jsx-no-lambda": false,
+    "no-string-literal": false,
     "member-access": [true, "no-public"],
     "no-unused-variable": true,
     "no-unused-expression": [true, "allow-fast-null-checks"],

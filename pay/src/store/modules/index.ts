@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import payInitial from './pay_initial';
+import payInitial from './payInitial';
 
 export default combineReducers({
   payInitial
