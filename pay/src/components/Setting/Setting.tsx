@@ -26,7 +26,7 @@ class Setting extends React.Component<IProps, IState> {
     incomeCycle: ''
   }
 
-  checkStatus = () => {
+  isRegisterAvailable = () => {
     const {
       currentMoney,
       hasFixedIncome,
@@ -37,6 +37,7 @@ class Setting extends React.Component<IProps, IState> {
     /**
      * TODO: alert 구문 대신 toastr로 변경
      */
+
     if (currentMoney === '') {
       alert('소지한 돈을 입력해주세요!');
       return false;
@@ -134,7 +135,7 @@ class Setting extends React.Component<IProps, IState> {
           to="/main"
           text="설정하기"
           onClick={() => {
-            this.checkStatus() && registerBaseInfo(this.state)
+            this.isRegisterAvailable() && registerBaseInfo(this.state)
           }}
         />
       </div>
