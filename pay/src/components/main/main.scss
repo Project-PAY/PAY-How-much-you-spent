@@ -1,9 +1,8 @@
 @import "../../style/variables";
 
 .main {
-  position: relative;
-
   header {
+    position: relative;
     height: 240px;
     background-color: $main-color;
     padding-left: 30px;
@@ -36,7 +35,7 @@
     .icon-plus {
       position: absolute;
       width: 78px;
-      bottom: -6px;
+      bottom: -24px;
       right: 12px;
       cursor: pointer;
     }
