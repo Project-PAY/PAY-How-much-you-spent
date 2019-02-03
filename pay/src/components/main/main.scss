@@ -1,0 +1,49 @@
+@import "../../style/variables";
+
+.main {
+  position: relative;
+
+  header {
+    height: 240px;
+    background-color: $main-color;
+    padding-left: 30px;
+
+    .icon-sidebar {
+      width: 26px;
+      padding-top: 30px;
+      cursor: pointer;
+    }
+
+    .total {
+      display: block;
+      font-family: 'Gotham Bold';
+      font-size: 20px;
+      color: $white-color;
+      opacity: .5;
+      letter-spacing: .5px;
+      padding-top: 80px;
+    }
+
+    h1 {
+      font-family: 'nanumsquare';
+      font-size: 40px;
+      font-weight: 800;
+      color: $white-color;
+      letter-spacing: -1px;
+      padding-top: 8px;
+    }
+
+    .icon-plus {
+      position: absolute;
+      width: 78px;
+      bottom: -6px;
+      right: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .current-infos {
+    height: calc(100% - 240px);
+    background-color: $white-color;
+  }
+}

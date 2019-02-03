@@ -8,7 +8,7 @@ interface IProps extends RouteComponentProps<any> {}
 
 class SplashMain extends React.Component<IProps> {
   componentDidMount() {
-    const pushTo = loadState('isRegistered') ? '/main' : '/welcome';
+    const pushTo = loadState('userBaseInfo') ? '/main' : '/welcome';
 
     setTimeout(() => {
       this.props.history.push(pushTo);
