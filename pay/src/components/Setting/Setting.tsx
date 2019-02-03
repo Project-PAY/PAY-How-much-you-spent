@@ -8,6 +8,10 @@ import {
 } from '../../lib/convertNumber';
 import LinkBtn from '../common/LinkBtn/LinkBtn';
 import InputRange from '../common/InputRange/InputRange';
+// import {ToastContainer, toast} from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import {SECOND} from 'src/constants/times';
+import {saveState} from 'src/lib/localStorage';
 import './setting.scss';
 
 interface IProps {
@@ -26,7 +30,7 @@ class Setting extends React.Component<IProps, IState> {
     incomeCycle: ''
   }
 
-  isRegisterAvailable = () => {
+  isRegisterAvailable = (isCheck: boolean = true) => {
     const {
       currentMoney,
       hasFixedIncome,
@@ -34,18 +38,14 @@ class Setting extends React.Component<IProps, IState> {
       incomeCycle
     } = this.state;
 
-    /**
-     * TODO: alert 구문 대신 toastr로 변경
-     */
-
     if (currentMoney === '') {
-      alert('소지한 돈을 입력해주세요!');
+      isCheck && alert('소지한 돈을 입력해주세요!');
       return false;
     } else if (hasFixedIncome && (fixedIncome === '')) {
-      alert('한달 고정 수입을 입력해주세요!');
+      isCheck && alert('한달 고정 수입을 입력해주세요!');
       return false;
     } else if (hasFixedIncome && (incomeCycle === '')) {
-      alert('수입 초기화 날짜를 입력해주세요!');
+      isCheck && alert('수입 초기화 날짜를 입력해주세요!');
       return false;
     }
 
@@ -76,6 +76,11 @@ class Setting extends React.Component<IProps, IState> {
       hasFixedIncome: !this.state.hasFixedIncome
     });
   }
+  
+  onCompleteSetting = () => {
+    this.props.registerBaseInfo(this.state);
+    saveState('userBaseInfo', this.state);
+  }
 
   render() {
     const {
@@ -84,7 +89,6 @@ class Setting extends React.Component<IProps, IState> {
       fixedIncome,
       incomeCycle
     } = this.state;
-    const {registerBaseInfo} = this.props;
 
     return (
       <div className="setting">
@@ -134,8 +138,9 @@ class Setting extends React.Component<IProps, IState> {
         <LinkBtn
           to="/main"
           text="설정하기"
+          isComplete={this.isRegisterAvailable(false)}
           onClick={() => {
-            this.isRegisterAvailable() && registerBaseInfo(this.state)
+            this.isRegisterAvailable() && this.onCompleteSetting();
           }}
         />
       </div>

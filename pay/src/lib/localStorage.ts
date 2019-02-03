@@ -1,8 +1,8 @@
 import IBase from '../@types/models/base';
 
-export const loadState = () => {
+export const loadState = (state: string) => {
   try {
-    const serializedState = localStorage.getItem('isRegistered');
+    const serializedState = localStorage.getItem(state);
     console.dir(serializedState);
 
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -12,10 +12,10 @@ export const loadState = () => {
   }
 }
 
-export const saveState = (state: IBase) => {
+export const saveState = (key: string, state: IBase) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('userSettingInfos', serializedState);
+    localStorage.setItem(key, serializedState);
   } catch(err) {
     console.error(err);
   }

@@ -1,27 +1,40 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 import './link-btn.scss';
 
-interface ILinkBtnProps {
+interface ILinkBtnProps extends RouteComponentProps<any> {
   to: string;
   text: string;
   onClick?: () => void;
+  isComplete?: boolean;  
 }
 
-/**
- * TODO: Link 속성 때문에 조건에 맞지 않아도 라우터 푸시가 되는데, 이를 방지해야됨
- */
+// TODO: 좀 더 나은 구문으로 변경하기
 
-const LinkBtn:React.ComponentType<ILinkBtnProps> = ({
-  to,
-  text,
-  onClick
-}) => (
-  <Link to={to}>
-    <button onClick={onClick}>
-      <span>{text}</span>
-    </button>
-  </Link>
-);
+class LinkBtn extends React.Component<ILinkBtnProps> {
+  static defaultProps = {
+    isComplete: true
+  }
 
-export default LinkBtn;
+  render() {
+    const {
+      to,
+      text,
+      onClick,
+      history,
+      isComplete
+    } = this.props;
+
+    return (
+      <button onClick={() => {
+        onClick && onClick();
+        isComplete && history.push(to);
+      }}
+      >
+        <span>{text}</span>
+      </button>
+    );
+  }
+}
+
+export default withRouter(LinkBtn);
