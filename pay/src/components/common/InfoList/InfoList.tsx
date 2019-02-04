@@ -18,10 +18,7 @@ const InfoList:React.FC<InfoListProps> = ({
   suffix
 }) => {
   return (
-    <li
-      className="info-list"
-      key={title}
-    >
+    <li className="info-list">
       <img
         src={imgSrc}
         alt={title}

@@ -72,9 +72,9 @@ class Setting extends React.Component<IProps, IState> {
   }
   
   onClick = () => {
-    this.setState({
-      hasFixedIncome: !this.state.hasFixedIncome
-    });
+    this.setState(prevState => ({
+      hasFixedIncome: !prevState.hasFixedIncome
+    }));
   }
   
   onCompleteSetting = () => {
