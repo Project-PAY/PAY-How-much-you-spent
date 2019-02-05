@@ -8,11 +8,23 @@ import {
 } from '../../constants/imgsAndIcons';
 import {convertToSpecificFormat} from 'src/lib/convertNumber';
 import InfoList from '../common/InfoList/InfoList';
+import Sidebar from '../common/Sidebar/Sidebar';
 import './main.scss';
 
-class Main extends React.Component {
+interface IProps {}
+
+interface IState {
+  isOpened: boolean;
+}
+
+class Main extends React.Component<IProps, IState> {
+  state: IState = {
+    isOpened: false
+  };
+
   currentInfoLists = () => {
     // Logic
+
     return [
       {
         title: '현재 수치',
@@ -60,13 +72,17 @@ class Main extends React.Component {
   }
 
   render() {
+    const {isOpened} = this.state;
+
     return (
       <div className="main">
+        <Sidebar isOpened={isOpened} />
         <header>
           <img
             src={ICON_SIDEBAR}
             alt="사이드바"
             className="icon-sidebar"
+            onClick={() => this.setState({isOpened: !isOpened})}
           />
           <span className="total">Total</span>
           <h1>₩ {convertToSpecificFormat('345672')}</h1>
