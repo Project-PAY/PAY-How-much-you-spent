@@ -6,6 +6,8 @@ export {default as ICON_PLUS} from '../assets/icons/icon-plus.png';
 export {default as ICON_RESET} from '../assets/icons/icon-reset.png';
 export {default as ICON_SIDEBAR} from '../assets/icons/icon-sidebar.png';
 export {default as ICON_UP_ARROW} from '../assets/icons/icon-up-arrow.png';
+export {default as ICON_BLOG} from '../assets/icons/icon-blog.png';
+export {default as ICON_GITHUB} from '../assets/icons/icon-github.png';
 
 // Images
 export {default as IMG_SETTING_BACKGROUND} from '../assets/images/img-setting-background.png';

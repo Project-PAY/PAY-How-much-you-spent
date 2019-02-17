@@ -15,11 +15,13 @@ interface IProps {}
 
 interface IState {
   isOpened: boolean;
+  isBtnClicked: boolean; // 초기 sidebar close 애니메이션 방지용
 }
 
 class Main extends React.Component<IProps, IState> {
   state: IState = {
-    isOpened: false
+    isOpened: false,
+    isBtnClicked: false
   };
 
   currentInfoLists = () => {
@@ -71,18 +73,32 @@ class Main extends React.Component<IProps, IState> {
     ]
   }
 
+  toggleSidebar = () => {
+    this.setState({
+      isOpened: !this.state.isOpened,
+      isBtnClicked: true
+    });
+  }
+
   render() {
-    const {isOpened} = this.state;
+    const {
+      isOpened,
+      isBtnClicked
+    } = this.state;
 
     return (
       <div className="main">
-        <Sidebar isOpened={isOpened} />
+        <Sidebar
+          isOpened={isOpened}
+          onClose={this.toggleSidebar}
+          isBtnClicked={isBtnClicked}
+        />
         <header>
           <img
             src={ICON_SIDEBAR}
             alt="사이드바"
             className="icon-sidebar"
-            onClick={() => this.setState({isOpened: !isOpened})}
+            onClick={this.toggleSidebar}
           />
           <span className="total">Total</span>
           <h1>₩ {convertToSpecificFormat('345672')}</h1>
