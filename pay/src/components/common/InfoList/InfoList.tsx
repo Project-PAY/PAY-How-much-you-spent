@@ -6,7 +6,7 @@ interface InfoListProps {
   title: string;
   subTitle: string;
   imgSrc: string;
-  mainValue: string;
+  mainValue: string | number | undefined;
   suffix: string;
 }
 

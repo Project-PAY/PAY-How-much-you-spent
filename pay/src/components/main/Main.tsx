@@ -10,8 +10,11 @@ import {convertToSpecificFormat} from 'src/lib/convertNumber';
 import InfoList from '../common/InfoList/InfoList';
 import Sidebar from '../common/Sidebar/Sidebar';
 import './main.scss';
+import IBase from 'src/@types/models/base';
 
-interface IProps {}
+interface IProps {
+  baseInfo: IBase;
+}
 
 interface IState {
   isOpened: boolean;
@@ -26,27 +29,45 @@ class Main extends React.Component<IProps, IState> {
 
   currentInfoLists = () => {
     // Logic
+    /**
+     * fixedIncome이 있는 경우: currentMoney / fixedIncome * 100
+     * fixedIncome이 없는 경우(currentMoney만 입력된 경우)
+     * currentMoney는 불변으로 놔두고, 다른 변수로 current를 측정하도록
+     * Ex. currentMoney = 100000, money = 84000(16000원 소비)
+     * => money / currentMoney * 100
+     */
+    const {
+      baseInfo: {
+        currentMoney,
+        fixedIncome,
+        incomeCycle
+      }
+    } = this.props;
+    console.dir(currentMoney);
+    console.dir(fixedIncome);
+    console.dir(incomeCycle);
 
     return [
       {
         title: '현재 수치',
         subTitle: '현재 수치를 나타냅니다.',
         imgSrc: ICON_PERCENT,
-        mainValue: '95',
+        mainValue: fixedIncome ?
+          '22' : '33',
         suffix: '퍼센트'
       },
       {
         title: '남은 돈',
         subTitle: '현재 남은 돈을 나타냅니다.',
         imgSrc: ICON_DOLLAR,
-        mainValue: convertToSpecificFormat('345672'),
+        mainValue: currentMoney as string,
         suffix: '원'
       },
       {
         title: '초기화',
         subTitle: '현재 남은 시간을 나타냅니다.',
         imgSrc: ICON_RESET,
-        mainValue: '14',
+        mainValue: incomeCycle,
         suffix: '일'
       },
       {

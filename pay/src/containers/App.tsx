@@ -4,7 +4,7 @@ import {
   SplashMain,
   Welcome,
   SettingContainer,
-  Main
+  MainContainer
 } from '../routes';
 import '../style/app.scss';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
         />
         <Route path="/welcome" component={Welcome} />
         <Route path="/setting" component={SettingContainer} />
-        <Route path="/main" component={Main} />
+        <Route path="/main" component={MainContainer} />
       </div>
     );
   }
