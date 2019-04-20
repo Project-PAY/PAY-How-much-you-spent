@@ -2,16 +2,14 @@ import * as React from 'react';
 import IBase from '../../@types/models/base';
 import MainTitle from '../common/MainTitle/MainTitle';
 import Input from '../common/Input/Input';
-import {
-  convertToSpecificFormat,
-  convertToNormalFormat
-} from '../../lib/convertNumber';
+import {convertToNormalFormat} from '../../lib/convertNumber';
 import LinkBtn from '../common/LinkBtn/LinkBtn';
 import InputRange from '../common/InputRange/InputRange';
 // import {ToastContainer, toast} from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // import {SECOND} from 'src/constants/times';
 import {saveState} from 'src/lib/localStorage';
+import _ from 'lodash-own';
 import './setting.scss';
 
 interface IProps {
@@ -59,7 +57,9 @@ class Setting extends React.Component<IProps, IState> {
     switch (type) {
       case 'money':
         this.setState({
-          [name]: value && convertToSpecificFormat(convertToNormalFormat(value))
+          [name]: value && _.characterNotation(
+            convertToNormalFormat(value), 3, ','
+          )
         });
         break;
       case 'date':

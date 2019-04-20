@@ -6,11 +6,11 @@ import {
   ICON_RESET,
   ICON_SIDEBAR
 } from '../../constants/imgsAndIcons';
-import {convertToSpecificFormat} from 'src/lib/convertNumber';
 import InfoList from '../common/InfoList/InfoList';
 import Sidebar from '../common/Sidebar/Sidebar';
 import './main.scss';
 import IBase from 'src/@types/models/base';
+import _ from 'lodash-own';
 
 interface IProps {
   baseInfo: IBase;
@@ -74,21 +74,21 @@ class Main extends React.Component<IProps, IState> {
         title: '하루 지출액',
         subTitle: '오늘 하루 지출액을 나타냅니다.',
         imgSrc: ICON_DOLLAR,
-        mainValue: convertToSpecificFormat('56000'),
+        mainValue: _.characterNotation('56000', 3, ','),
         suffix: '원'
       },
       {
         title: '이번 달 지출액',
         subTitle: '이번 한 달의 지출액을 나타냅니다.',
         imgSrc: ICON_DOLLAR,
-        mainValue: convertToSpecificFormat('146000'),
+        mainValue: _.characterNotation('146000', 3, ','),
         suffix: '원'
       },
       {
         title: '저번 달 지출액',
         subTitle: '저번 한 달의 지출액을 나타냅니다.',
         imgSrc: ICON_DOLLAR,
-        mainValue: convertToSpecificFormat('672800'),
+        mainValue: _.characterNotation('672800', 3, ','),
         suffix: '원'
       }
     ]
@@ -122,7 +122,7 @@ class Main extends React.Component<IProps, IState> {
             onClick={this.toggleSidebar}
           />
           <span className="total">Total</span>
-          <h1>₩ {convertToSpecificFormat('345672')}</h1>
+          <h1>₩ {_.characterNotation('345672', 3, ',')}</h1>
           <img
             src={ICON_PLUS}
             alt="수입/지출 추가"
